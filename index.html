@@ -157,9 +157,11 @@ skylink.on('incomingMessage', function(message, peerId, peerInfo, isSelf) {
     className = 'message';
   }
 	var mes = message.content;
+	var aud = new Audio();
   addMessage(user + ': ' + message.content, className);
-	if(mes.substr(0, 4) == "/tts"){responsiveVoice.speak(mes.substr(5).toString()); console.log("ut oes it fucking broke")}
-	console.log(mes.substr(0, 4))
+	if(mes.substr(0, 4) == "/tts"){responsiveVoice.speak(mes.substr(5).toString());}
+	console.log(mes.substr(0, 4));
+	is(mes.substr(0, 5) == "/play"){aud.src = mes.substr(7);aud.play()}
 });
 function sendMessage() {
   var input = document.getElementById('message');
