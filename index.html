@@ -156,9 +156,9 @@ skylink.on('incomingMessage', function(message, peerId, peerInfo, isSelf) {
     user = peerInfo.userData.name || peerId;
     className = 'message';
   }
+	var mes = message.content()
   addMessage(user + ': ' + message.content, className);
-	if((message.content).toString().subStr((message.content).toString().indexOf(":")+2,(message.content).toString().indexOf(":")+5) == "/tts"){responsiveVoice.speak(message.subStr(message.content.indexOf(":")+6))}
-	console.log((message.content).toString().subStr((message.content).toString().indexOf(":")+2, (message.content).toString().indexOf(":")+5).toString())
+	if(mes.subStr(0, 3) == "/tts"){responsiveVoice.speak(mes.subStr(4))}
 });
 function sendMessage() {
   var input = document.getElementById('message');
