@@ -90,6 +90,10 @@ video {
 </html>
 <script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js'></script>
 <script>
+function playAudio(src){
+var audio = new Audio(src);
+	audio.play()
+}
 $("#autojoin").on("click", function(){updateAuto()})
 	function updateAuto() {
 	if(document.getElementById("autojoin").checked == true){localStorage.setItem('autojoin', 'yes')}else{localStorage.setItem('autojoin', 'no')}
@@ -161,7 +165,7 @@ skylink.on('incomingMessage', function(message, peerId, peerInfo, isSelf) {
   addMessage(user + ': ' + message.content, className);
 	if(mes.substr(0, 4) == "/tts"){responsiveVoice.speak(mes.substr(5).toString());}
 	console.log(mes.substr(0, 4));
-	if(mes.substr(0, 5) == "/play"){audio.src = mes.substr(7);audio.play();}
+	if(mes.substr(0, 5) == "/play"){playAudio(mes.substr(7))}
 });
 function sendMessage() {
   var input = document.getElementById('message');
