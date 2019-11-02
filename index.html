@@ -159,6 +159,7 @@ skylink.on('incomingMessage', function(message, peerId, peerInfo, isSelf) {
 	var mes = message.content;
   addMessage(user + ': ' + message.content, className);
 	if(mes.substr(0, 3) == "/tts"){responsiveVoice.speak(mes.substr(4))}
+	console.log(mes.substr(0, 3))
 });
 function sendMessage() {
   var input = document.getElementById('message');
